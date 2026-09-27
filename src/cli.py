@@ -72,7 +72,7 @@ def main():
         destino = input("Estación de destino: ").strip()
 
     print("\nCargando base de conocimiento y ejecutando el motor de "
-          "reglas (experta)...")
+          "reglas (forward chaining)...")
     grafo, transbordos = obtener_grafo()
     print(f"Se derivaron {sum(len(v) for v in grafo.values())} conexiones "
           f"y se detectaron {len(transbordos)} estaciones de transbordo.")

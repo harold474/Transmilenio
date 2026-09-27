@@ -5,10 +5,13 @@ Implementa:
 
 1. Una **base de conocimiento** en reglas lógicas (estaciones, líneas
    troncales y tramos con tiempo de viaje) — ver `src/knowledge_base.py`.
-2. Un **motor de reglas** (sistema experto) construido con la librería
-   [`experta`](https://github.com/nilp0inter/experta) que deriva el grafo
-   de conexiones y detecta las estaciones de transbordo — ver
-   `src/rules_engine.py`.
+2. Un **motor de reglas** (sistema experto) propio, de encadenamiento
+   hacia adelante (forward chaining), que deriva el grafo de conexiones
+   y detecta las estaciones de transbordo — ver `src/rules_engine.py`.
+   > Nota: la primera versión usaba la librería `experta`, pero esa
+   > librería está abandonada desde 2021 y no funciona en versiones
+   > modernas de Python (3.10+), así que se reemplazó por un motor de
+   > reglas propio con el mismo paradigma (Hechos + Reglas SI-ENTONCES).
 3. Un **algoritmo de búsqueda heurística A\*** que usa ese grafo para
    encontrar la mejor ruta (menor tiempo, considerando penalización por
    transbordo) entre una estación de origen y una de destino — ver
@@ -25,33 +28,47 @@ Implementa:
 
 ## 1. Requisitos
 
-- Python 3.9, 3.10, 3.11 o 3.12.
+- Python 3.8 o superior (no depende de librerías externas para el
+  motor de reglas, así que cualquier versión reciente de Python sirve).
 - pip
 
 ## 2. Instalación
 
+> **Importante:** ejecuten cada comando por separado (uno, Enter,
+> esperar a que termine, el siguiente). Pegar varios comandos en una
+> sola línea en Git Bash / MINGW64 hace que el segundo y tercer comando
+> se interpreten como argumentos del primero, y eso da errores como
+> `unrecognized arguments`.
+
 ```bash
 git clone <URL-DE-SU-REPOSITORIO>
 cd <carpeta-del-proyecto>
+```
 
+Crear el entorno virtual (un solo comando):
+
+```bash
 python -m venv venv
-source venv/bin/activate        # En Windows: venv\Scripts\activate
+```
 
+Activarlo (un solo comando; escojan la línea según su sistema):
+
+```bash
+source venv/Scripts/activate    # Windows con Git Bash / MINGW64
+# venv\Scripts\activate.bat     # Windows con CMD
+# source venv/bin/activate      # Linux / macOS
+```
+
+Cuando el entorno esté activo, el inicio de la línea de comandos debe
+mostrar `(venv)`. Solo entonces instalen las dependencias:
+
+```bash
 pip install -r requirements.txt
 ```
 
-### Si `pip install experta` falla
-
-`experta` es una librería algo antigua. Si da error de instalación,
-intenten:
-
-```bash
-pip install frozendict==1.2
-pip install experta --no-deps
-```
-
-El código ya incluye un parche de compatibilidad (en
-`src/rules_engine.py`) para que `experta` funcione en Python 3.10+.
+El único paquete externo que se usa ahora es `pytest` (para las
+pruebas automatizadas). El motor de reglas y el algoritmo de búsqueda
+son 100% Python estándar, sin dependencias frágiles.
 
 ## 3. Ejecución
 

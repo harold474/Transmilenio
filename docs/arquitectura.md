@@ -7,9 +7,13 @@
   linea, minutos)`.
 - **Regla de inferencia**: "si existe un `Segmento` entre A y B en la
   línea L con tiempo M, entonces existe una `Conexion` utilizable entre
-  A y B". Esto es una regla lógica de tipo `SI ... ENTONCES ...`
-  implementada con `experta` (motor de encadenamiento hacia adelante,
-  similar a CLIPS/Prolog).
+  A y B". Esto es una regla lógica de tipo `SI ... ENTONCES ...`,
+  implementada con un motor de encadenamiento hacia adelante propio
+  (`MotorReglas` en `rules_engine.py`), similar en su lógica a
+  CLIPS/Prolog: hechos en una memoria de trabajo, reglas que se
+  disparan cuando aparece un hecho del tipo que les interesa, y un
+  ciclo que se repite hasta que no se derivan hechos nuevos (punto
+  fijo).
 - **Regla derivada de transbordo**: "si una estación pertenece a más de
   una línea, entonces es una estación de transbordo".
 
@@ -31,7 +35,7 @@
 
 - Usa **representación del conocimiento en reglas lógicas** (capítulo 2
   y 3 de Benítez): hechos + reglas SI-ENTONCES con un motor de
-  inferencia real (`experta`).
+  inferencia de encadenamiento hacia adelante propio.
 - Usa **técnicas de búsqueda heurística** (capítulo 9): A* con función
   heurística admisible.
 - Resuelve un problema real y acotado: la mejor ruta entre dos puntos
