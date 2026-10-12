@@ -127,11 +127,18 @@ transmilenio_router/
 │   ├── knowledge_base.py   # Base de conocimiento (hechos)
 │   ├── rules_engine.py     # Motor de reglas (experta)
 │   ├── pathfinding.py      # Búsqueda heurística A*
+│   ├── ml_model.py         # Actividad 5: dataset + árbol de decisión
 │   └── cli.py              # Punto de entrada / interfaz de consola
+├── data/
+│   └── viajes_transmilenio.csv   # Dataset generado (Actividad 5)
 ├── tests/
 │   ├── test_rules_engine.py
-│   └── test_pathfinding.py
+│   ├── test_pathfinding.py
+│   └── test_ml_model.py
 └── docs/
+    ├── descripcion_datos.md   # Fuentes y descripción del dataset
+    ├── reglas_arbol.txt       # Reglas aprendidas por el árbol
+    ├── resultados_modelo.txt  # Métricas del modelo
     ├── plan_pruebas.md     # Plantilla para el documento PDF de pruebas
     └── arquitectura.md     # Explicación breve para el video/sustentación
 ```
@@ -175,3 +182,23 @@ real de cada persona, que es justo lo que se va a revisar.
       con la participación de todos los integrantes.
 - [ ] Repositorio Git con el tutor agregado como colaborador y el log de
       commits evidenciando el trabajo de cada integrante.
+
+## 8. Actividad 5: aprendizaje supervisado (árbol de decisión)
+
+El módulo `src/ml_model.py` genera un dataset de viajes a partir del
+propio sistema experto (cada ruta la calcula el motor de reglas + A*) y
+entrena un árbol de decisión que predice el **nivel de ocupación**
+(`baja` / `media` / `alta`) de un viaje.
+
+```bash
+pip install -r requirements.txt
+python src/ml_model.py
+pytest -v
+```
+
+Salidas: `data/viajes_transmilenio.csv`, `docs/resultados_modelo.txt`
+(métricas) y `docs/reglas_arbol.txt` (reglas aprendidas). La descripción
+de las fuentes y de cada columna está en `docs/descripcion_datos.md`.
+
+> Los datos son **sintéticos**: la ocupación se simula con un modelo de
+> demanda con ruido porque no hay datos públicos de viajes individuales.

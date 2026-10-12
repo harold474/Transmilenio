@@ -1,0 +1,35 @@
+Dataset: 3000 filas -> F:\transmilenio_router\data\viajes_transmilenio.csv
+Distribución de la clase objetivo:
+ocupacion
+baja     1006
+alta     1004
+media     990
+
+Baseline (clase mayoritaria): 0.335
+Exactitud entrenamiento:      0.775
+Exactitud prueba:             0.747
+Validación cruzada (5):       0.758 +/- 0.013
+
+Matriz de confusión (filas = real, columnas = predicho):
+       baja  media  alta
+baja    134     66     1
+media    24    162    12
+alta      0     49   152
+
+              precision    recall  f1-score   support
+
+        baja       0.85      0.67      0.75       201
+       media       0.58      0.82      0.68       198
+        alta       0.92      0.76      0.83       201
+
+    accuracy                           0.75       600
+   macro avg       0.78      0.75      0.75       600
+weighted avg       0.79      0.75      0.75       600
+
+Importancia de atributos (top 6):
+num_transbordos    0.296
+es_habil           0.241
+es_hora_pico       0.220
+lluvia             0.078
+hora               0.060
+dia_semana         0.044

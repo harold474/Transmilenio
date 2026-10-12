@@ -1,0 +1,130 @@
+|--- es_hora_pico <= 0.50
+|   |--- num_transbordos <= 1.50
+|   |   |--- num_transbordos <= 0.50
+|   |   |   |--- lluvia <= 0.50
+|   |   |   |   |--- transbordos_atravesados <= 1.50
+|   |   |   |   |   |--- dia_semana <= 2.50
+|   |   |   |   |   |   |--- class: baja
+|   |   |   |   |   |--- dia_semana >  2.50
+|   |   |   |   |   |   |--- class: baja
+|   |   |   |   |--- transbordos_atravesados >  1.50
+|   |   |   |   |   |--- class: baja
+|   |   |   |--- lluvia >  0.50
+|   |   |   |   |--- es_habil <= 0.50
+|   |   |   |   |   |--- class: baja
+|   |   |   |   |--- es_habil >  0.50
+|   |   |   |   |   |--- num_estaciones <= 2.50
+|   |   |   |   |   |   |--- class: baja
+|   |   |   |   |   |--- num_estaciones >  2.50
+|   |   |   |   |   |   |--- class: media
+|   |   |--- num_transbordos >  0.50
+|   |   |   |--- lluvia <= 0.50
+|   |   |   |   |--- hora <= 7.50
+|   |   |   |   |   |--- minutos_base <= 19.00
+|   |   |   |   |   |   |--- class: baja
+|   |   |   |   |   |--- minutos_base >  19.00
+|   |   |   |   |   |   |--- class: baja
+|   |   |   |   |--- hora >  7.50
+|   |   |   |   |   |--- hora <= 20.50
+|   |   |   |   |   |   |--- class: media
+|   |   |   |   |   |--- hora >  20.50
+|   |   |   |   |   |   |--- class: baja
+|   |   |   |--- lluvia >  0.50
+|   |   |   |   |--- dia_semana <= 5.50
+|   |   |   |   |   |--- minutos_base <= 26.50
+|   |   |   |   |   |   |--- class: media
+|   |   |   |   |   |--- minutos_base >  26.50
+|   |   |   |   |   |   |--- class: media
+|   |   |   |   |--- dia_semana >  5.50
+|   |   |   |   |   |--- class: baja
+|   |--- num_transbordos >  1.50
+|   |   |--- lluvia <= 0.50
+|   |   |   |--- es_habil <= 0.50
+|   |   |   |   |--- transbordos_atravesados <= 2.50
+|   |   |   |   |   |--- dia_semana <= 5.50
+|   |   |   |   |   |   |--- class: media
+|   |   |   |   |   |--- dia_semana >  5.50
+|   |   |   |   |   |   |--- class: baja
+|   |   |   |   |--- transbordos_atravesados >  2.50
+|   |   |   |   |   |--- hora <= 20.50
+|   |   |   |   |   |   |--- class: media
+|   |   |   |   |   |--- hora >  20.50
+|   |   |   |   |   |   |--- class: baja
+|   |   |   |--- es_habil >  0.50
+|   |   |   |   |--- transbordos_atravesados <= 2.50
+|   |   |   |   |   |--- hora <= 20.50
+|   |   |   |   |   |   |--- class: media
+|   |   |   |   |   |--- hora >  20.50
+|   |   |   |   |   |   |--- class: baja
+|   |   |   |   |--- transbordos_atravesados >  2.50
+|   |   |   |   |   |--- hora <= 7.50
+|   |   |   |   |   |   |--- class: media
+|   |   |   |   |   |--- hora >  7.50
+|   |   |   |   |   |   |--- class: media
+|   |   |--- lluvia >  0.50
+|   |   |   |--- dia_semana <= 5.50
+|   |   |   |   |--- transbordos_atravesados <= 2.50
+|   |   |   |   |   |--- hora <= 11.50
+|   |   |   |   |   |   |--- class: media
+|   |   |   |   |   |--- hora >  11.50
+|   |   |   |   |   |   |--- class: alta
+|   |   |   |   |--- transbordos_atravesados >  2.50
+|   |   |   |   |   |--- hora <= 20.50
+|   |   |   |   |   |   |--- class: alta
+|   |   |   |   |   |--- hora >  20.50
+|   |   |   |   |   |   |--- class: media
+|   |   |   |--- dia_semana >  5.50
+|   |   |   |   |--- class: media
+|--- es_hora_pico >  0.50
+|   |--- es_habil <= 0.50
+|   |   |--- num_transbordos <= 1.50
+|   |   |   |--- num_transbordos <= 0.50
+|   |   |   |   |--- class: baja
+|   |   |   |--- num_transbordos >  0.50
+|   |   |   |   |--- es_festivo <= 0.50
+|   |   |   |   |   |--- dia_semana <= 5.50
+|   |   |   |   |   |   |--- class: media
+|   |   |   |   |   |--- dia_semana >  5.50
+|   |   |   |   |   |   |--- class: baja
+|   |   |   |   |--- es_festivo >  0.50
+|   |   |   |   |   |--- class: baja
+|   |   |--- num_transbordos >  1.50
+|   |   |   |--- dia_semana <= 5.50
+|   |   |   |   |--- minutos_base <= 23.50
+|   |   |   |   |   |--- class: media
+|   |   |   |   |--- minutos_base >  23.50
+|   |   |   |   |   |--- minutos_base <= 30.50
+|   |   |   |   |   |   |--- class: media
+|   |   |   |   |   |--- minutos_base >  30.50
+|   |   |   |   |   |   |--- class: alta
+|   |   |   |--- dia_semana >  5.50
+|   |   |   |   |--- minutos_base <= 32.00
+|   |   |   |   |   |--- class: media
+|   |   |   |   |--- minutos_base >  32.00
+|   |   |   |   |   |--- class: media
+|   |--- es_habil >  0.50
+|   |   |--- num_transbordos <= 0.50
+|   |   |   |--- lluvia <= 0.50
+|   |   |   |   |--- transbordos_atravesados <= 0.50
+|   |   |   |   |   |--- hora <= 13.00
+|   |   |   |   |   |   |--- class: media
+|   |   |   |   |   |--- hora >  13.00
+|   |   |   |   |   |   |--- class: media
+|   |   |   |   |--- transbordos_atravesados >  0.50
+|   |   |   |   |   |--- class: alta
+|   |   |   |--- lluvia >  0.50
+|   |   |   |   |--- class: alta
+|   |   |--- num_transbordos >  0.50
+|   |   |   |--- minutos_base <= 24.50
+|   |   |   |   |--- num_transbordos <= 1.50
+|   |   |   |   |   |--- dia_semana <= 3.50
+|   |   |   |   |   |   |--- class: alta
+|   |   |   |   |   |--- dia_semana >  3.50
+|   |   |   |   |   |   |--- class: alta
+|   |   |   |   |--- num_transbordos >  1.50
+|   |   |   |   |   |--- class: alta
+|   |   |   |--- minutos_base >  24.50
+|   |   |   |   |--- num_estaciones <= 5.50
+|   |   |   |   |   |--- class: alta
+|   |   |   |   |--- num_estaciones >  5.50
+|   |   |   |   |   |--- class: alta
