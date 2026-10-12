@@ -128,16 +128,23 @@ transmilenio_router/
 │   ├── rules_engine.py     # Motor de reglas (experta)
 │   ├── pathfinding.py      # Búsqueda heurística A*
 │   ├── ml_model.py         # Actividad 5: dataset + árbol de decisión
+│   ├── clustering.py       # Actividad 6: agrupamiento de estaciones
 │   └── cli.py              # Punto de entrada / interfaz de consola
 ├── data/
-│   └── viajes_transmilenio.csv   # Dataset generado (Actividad 5)
+│   ├── viajes_transmilenio.csv   # Dataset generado (Actividad 5)
+│   ├── estaciones_features.csv   # Dataset de estaciones (Actividad 6)
+│   └── estaciones_clusters.csv   # Estaciones con su cluster
 ├── tests/
 │   ├── test_rules_engine.py
 │   ├── test_pathfinding.py
-│   └── test_ml_model.py
+│   ├── test_ml_model.py
+│   └── test_clustering.py
 └── docs/
     ├── descripcion_datos.md   # Fuentes y descripción del dataset
     ├── reglas_arbol.txt       # Reglas aprendidas por el árbol
+    ├── descripcion_datos_clustering.md  # Datos y metodología de la Actividad 6
+    ├── resultados_clustering.txt        # Resultados del agrupamiento
+    ├── fig_codo_silueta.png / fig_clusters_pca.png
     ├── resultados_modelo.txt  # Métricas del modelo
     ├── plan_pruebas.md     # Plantilla para el documento PDF de pruebas
     └── arquitectura.md     # Explicación breve para el video/sustentación
@@ -202,3 +209,22 @@ de las fuentes y de cada columna está en `docs/descripcion_datos.md`.
 
 > Los datos son **sintéticos**: la ocupación se simula con un modelo de
 > demanda con ruido porque no hay datos públicos de viajes individuales.
+
+## 9. Actividad 6: aprendizaje no supervisado (agrupamiento)
+
+El módulo `src/clustering.py` agrupa las 33 estaciones de la red en
+perfiles parecidos (portales, centro, nodos de transbordo, intermedias)
+con **K-Means** y **agrupamiento jerárquico (Ward)**, eligiendo k con
+codo y silueta y visualizando con PCA. Los atributos estructurales
+(líneas, grado, intermediación, distancia al centro) salen del motor de
+reglas y de A*; la demanda por franja es simulada.
+
+```bash
+pip install -r requirements.txt
+python src/clustering.py
+pytest -v
+```
+
+Salidas: `data/estaciones_features.csv`, `data/estaciones_clusters.csv`,
+`docs/resultados_clustering.txt` y las figuras `docs/fig_*.png`. Los
+datos y la metodología están en `docs/descripcion_datos_clustering.md`.

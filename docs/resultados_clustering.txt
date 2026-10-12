@@ -1,0 +1,48 @@
+Dataset: 33 estaciones, 8 atributos -> F:\transmilenio_router\data\estaciones_features.csv
+
+Selección de k (K-Means):
+ k  inercia  silueta  min_grupo
+ 2  136.359    0.563          5
+ 3   88.299    0.475          5
+ 4   47.544    0.635          5
+ 5   25.276    0.647          1
+ 6   14.530    0.659          1
+ 7   10.505    0.631          1
+ 8    8.458    0.489          1
+k elegido (mayor silueta con grupos de al menos 3 estaciones): 4
+
+Silueta K-Means:           0.635
+Davies-Bouldin K-Means:    0.578  (menor es mejor)
+Silueta jerárquico (Ward): 0.635
+ARI K-Means vs jerárquico: 1.000  (1 = idénticos)
+ARI K-Means vs perfil latente (validación, dato simulado): 1.000
+Varianza explicada por PCA (2 componentes): 81.9%
+
+Tamaño de cada grupo:
+grupo
+C0: Estaciones intermedias          14
+C1: Centro (pico en la tarde)        8
+C2: Nodos de transbordo              5
+C3: Portales (pico en la mañana)     6
+
+Promedio de atributos por grupo (centroides en unidades originales):
+                                  num_lineas  grado  intermediacion  dist_centro_km  pico_am  pico_pm  valle  fin_semana
+grupo                                                                                                                   
+C0: Estaciones intermedias               1.0   2.00            0.09            7.77     5.15     4.98   3.76        3.09
+C1: Centro (pico en la tarde)            1.0   1.88            0.13            3.56     6.66    15.80   9.99        6.25
+C2: Nodos de transbordo                  2.4   3.40            0.38            4.08    17.59    18.47  14.58       10.29
+C3: Portales (pico en la mañana)         1.0   1.00            0.00           11.88    17.03     4.94   5.92        6.49
+
+Composición de cada grupo según el perfil latente simulado:
+perfil_latente                    centro  intermedia  portal  transbordo
+grupo                                                                   
+C0: Estaciones intermedias             0          14       0           0
+C1: Centro (pico en la tarde)          8           0       0           0
+C2: Nodos de transbordo                0           0       0           5
+C3: Portales (pico en la mañana)       0           0       6           0
+
+Estaciones por grupo:
+  C0: Estaciones intermedias: Alcala, Banderas, BibliotecaTintal, Boyaca, Calle100, Calle106, Calle85, ElPolo, HumedalCordoba, Molinos, Quirigua, Sena, SubaTV91, Tunal
+  C1: Centro (pico en la tarde): Calle72, Consuelo, CountrySur, MinutoDeDios, MuseoDelOro, Normandia, TercerMilenio, Universidades
+  C2: Nodos de transbordo: AvenidaJimenez, Calle146, Heroes, Ricaurte, SimonBolivar
+  C3: Portales (pico en la mañana): Portal80, PortalAmericas, PortalNorte, PortalSuba, PortalSur, PortalUsme
